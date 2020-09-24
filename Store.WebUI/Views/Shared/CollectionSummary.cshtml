@@ -1,0 +1,25 @@
+﻿@model Store.Entities.Collection
+
+<div class="well">
+    @if (Model.ImageData != null)
+    {
+        <div class="pull-left" style="margin-right: 10px">
+            <img class="img-thumbnail" width="75" height="75"
+                 src="@Url.Action("GetImage", "Collection",
+                new { Model.CollectionId })" />
+        </div>
+    }
+
+    <h3>
+        <strong>@Html.ActionLink(@Model.Name, "Index", new { @Model.CollectionId })</strong>
+        <span class="pull-right label label-primary" style="margin-top: -25px">@Model.Price.ToString("# руб")</span>
+    </h3>
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.CollectionId)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" style="margin-top: -25px" value="Добавить в корзину" />
+        </div>
+    }
+</div>

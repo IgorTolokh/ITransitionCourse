@@ -1,0 +1,28 @@
+﻿@using Store.WebUI.Models
+@using Store.WebUI.HtmlHelpers
+@model CollectionsListViewModel
+@{
+    ViewBag.Title = "Коллекция";
+}
+
+@foreach (var p in @Model.Collections)
+{
+    @Html.Partial("IndexSummary", p)
+}
+<div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Название</th>
+                <th class="text-center">Цена</th>
+            </tr>
+            @foreach (var item in @Model.Collections)
+            {
+                <tr>
+                    <td class="text-center">@item.CollectionId</td>
+                    <td class="text-center">@item.Name</td>
+                    <td class="text-center">@item.Price.ToString("# руб")</td>
+                </tr>
+            }
+        </table>
+</div>

@@ -1,0 +1,16 @@
+﻿@using Store.WebUI.Models
+@using Store.WebUI.HtmlHelpers
+@model CollectionsListViewModel
+@{
+    ViewBag.Title = "Коллекции";
+}
+
+@foreach (var p in @Model.Collections)
+{
+    @Html.Partial("CollectionSummary", p)
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>
+

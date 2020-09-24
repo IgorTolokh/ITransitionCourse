@@ -1,0 +1,20 @@
+﻿@model Store.Entities.Collection
+<div class="well">
+    @if (@Model.ImageData != null)
+    {
+        <div class="pull-left" style="margin-right: 10px">
+            <img class="img-thumbnail" width="75" height="75"
+                 src="@Url.Action("GetImage", "Collection",
+                new { @Model.CollectionId })" />
+        </div>
+    }
+
+    <h3>Название коллекции: @Model.Name</h3>
+    <h5 class="label label-primary">Категория: @Model.Category</h5>
+    <h4>
+        Описание:
+        <p>
+            @Model.Description
+        </p>
+    </h4>
+</div>
